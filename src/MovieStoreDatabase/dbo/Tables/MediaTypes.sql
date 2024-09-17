@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[MediaTypes]
+(
+	[MediaTypeId] INT NOT NULL IDENTITY(1,1) CONSTRAINT PK_MediaTypes PRIMARY KEY,
+	[MediaTypeName] NVARCHAR(50) NOT NULL CONSTRAINT AK_MediaTypes_MediaTypeName UNIQUE
+)

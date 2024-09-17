@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Titles]
+(
+	[TitleId] INT NOT NULL IDENTITY(1,1) CONSTRAINT PK_Titles PRIMARY KEY,
+	[TitleName] NVARCHAR(250) NOT NULL,
+	[TitleYear] INT NULL,
+	[IMDBID] NVARCHAR(50) NULL,
+	[MediaTypeId] INT NOT NULL CONSTRAINT FK_Titles_MediaTypes FOREIGN KEY REFERENCES [MediaTypes]([MediaTypeId])
+)
