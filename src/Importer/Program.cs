@@ -1,13 +1,23 @@
-﻿using CsvHelper;
+﻿using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using CsvHelper;
 using Importer;
 using Microsoft.Data.SqlClient;
 using System.Globalization;
 
 const string InitialDataFilename = "InitialData.csv";
-const string DatabaseConnectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=MovieStore;Integrated Security=True;Trust Server Certificate=True;";
+
+static string GetDatabaseConnectionString()
+{
+    var vaultUri = new Uri("https://splorr-kv.vault.azure.net/");
+    var secretName = "SplorrDatabase";
+    var credential = new DefaultAzureCredential();
+    var client = new SecretClient(vaultUri, credential);
+    return client.GetSecret(secretName).Value.Value;
+}
 
 var initialData = ReadInitialDataFromCsv();
-using var connection = new SqlConnection(DatabaseConnectionString);
+using var connection = new SqlConnection(GetDatabaseConnectionString());
 connection.Open();
 ClearGenres(connection);
 ClearTitles(connection);
@@ -46,9 +56,10 @@ static void WriteToGenreTitles(SqlConnection connection, InitialDataSchema row, 
     foreach(var token in tokens)
     {
         using var command = connection.CreateCommand();
-        command.CommandText = "INSERT INTO [GenreTitles]([TitleId],[GenreId]) VALUES(@TitleId,@GenreId);";
-        command.Parameters.AddWithValue("@TitleId", titleId);
-        command.Parameters.AddWithValue("@GenreId", genreTable[token]);
+        command.CommandText = $"INSERT INTO [GenreTitles]([TitleId],[GenreId]) VALUES(@TitleId,@GenreId);";
+        command.Parameters.AddWithValue($"@TitleId", titleId);
+        command.Parameters.AddWithValue($"@GenreId", genreTable[token]);
+        command.ExecuteNonQuery();
     }
 }
 

@@ -9,7 +9,7 @@
   </SourceModelProvider>
   <TargetModelProvider>
     <ConnectionBasedModelProvider>
-      <ConnectionString>Data Source=DESKTOP-8E6JGU4\SQLEXPRESS;Initial Catalog=MovieStore;Integrated Security=True;Persist Security Info=False;Pooling=False;Multiple Active Result Sets=False;Connect Timeout=60;Encrypt=True;Trust Server Certificate=True;Command Timeout=0</ConnectionString>
+      <ConnectionString>Data Source=splorr.database.windows.net,1433;Initial Catalog=splorr;Persist Security Info=False;User ID=ernestpazera@msn.com;Pooling=False;Multiple Active Result Sets=False;Connect Timeout=60;Encrypt=True;Trust Server Certificate=False;Authentication=ActiveDirectoryInteractive;Command Timeout=0</ConnectionString>
     </ConnectionBasedModelProvider>
   </TargetModelProvider>
   <SchemaCompareSettingsService>
@@ -346,11 +346,11 @@
       </PropertyElementName>
       <PropertyElementName>
         <Name>TargetDatabaseName</Name>
-        <Value>MovieStore</Value>
+        <Value>splorr</Value>
       </PropertyElementName>
       <PropertyElementName>
         <Name>TargetConnectionString</Name>
-        <Value>Data Source=DESKTOP-8E6JGU4\SQLEXPRESS;Initial Catalog=MovieStore;Integrated Security=True;Persist Security Info=False;Pooling=False;Multiple Active Result Sets=False;Connect Timeout=60;Encrypt=True;Trust Server Certificate=True;Application Name="Microsoft SQL Server Data Tools, Schema Compare";Command Timeout=0</Value>
+        <Value>Data Source=splorr.database.windows.net,1433;Initial Catalog=splorr;Persist Security Info=False;User ID=ernestpazera@msn.com;Pooling=False;Multiple Active Result Sets=False;Connect Timeout=60;Encrypt=True;Trust Server Certificate=False;Authentication=ActiveDirectoryInteractive;Application Name="Microsoft SQL Server Data Tools, Schema Compare";Command Timeout=0</Value>
       </PropertyElementName>
       <PropertyElementName>
         <Name>TreatVerificationErrorsAsWarnings</Name>
