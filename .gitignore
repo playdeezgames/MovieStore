@@ -396,3 +396,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/src/Sandbox/Properties/launchSettings.json
+/src/MovieStore/Properties/launchSettings.json
+/src/Importer/Properties/launchSettings.json
